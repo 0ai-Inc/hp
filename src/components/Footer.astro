@@ -1,0 +1,35 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-white/5 bg-primary-dark">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+      <div>
+        <a href={tp('/')} class="text-xl font-bold text-white">0ai</a>
+        <p class="mt-2 text-sm text-white/50 max-w-xs">
+          {t('site.description')}
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-8">
+        <div class="flex flex-col gap-2">
+          <a href={tp('/services')} class="text-sm text-white/50 hover:text-white transition-colors">{t('nav.services')}</a>
+          <a href={tp('/about')} class="text-sm text-white/50 hover:text-white transition-colors">{t('nav.about')}</a>
+          <a href={tp('/contact')} class="text-sm text-white/50 hover:text-white transition-colors">{t('nav.contact')}</a>
+        </div>
+        <div class="flex flex-col gap-2">
+          <a href={tp('/privacy')} class="text-sm text-white/50 hover:text-white transition-colors">{t('footer.privacy')}</a>
+          <a href={tp('/terms')} class="text-sm text-white/50 hover:text-white transition-colors">{t('footer.terms')}</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-white/5 text-center">
+      <p class="text-sm text-white/30">&copy; {year} 0ai Inc. {t('footer.rights')}</p>
+    </div>
+  </div>
+</footer>

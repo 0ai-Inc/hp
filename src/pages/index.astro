@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('ja');
+---
+
+<BaseLayout title={t('site.title')} description={t('site.description')} lang="ja">
+  <Hero />
+
+  <section class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold">{t('services.title')}</h2>
+        <p class="mt-4 text-white/50 max-w-2xl mx-auto">{t('services.subtitle')}</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ServiceCard title={t('services.nexcast.title')} description={t('services.nexcast.desc')} />
+        <ServiceCard title={t('services.envoy.title')} description={t('services.envoy.desc')} />
+        <ServiceCard title={t('services.flecto.title')} description={t('services.flecto.desc')} />
+        <ServiceCard title={t('services.animex.title')} description={t('services.animex.desc')} />
+        <ServiceCard title={t('services.custom.title')} description={t('services.custom.desc')} />
+        <ServiceCard title={t('services.consult.title')} description={t('services.consult.desc')} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

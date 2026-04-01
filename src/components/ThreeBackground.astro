@@ -1,0 +1,18 @@
+---
+---
+
+<div id="three-bg" class="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true"></div>
+
+<script>
+  import { initParticleNetwork } from '../scripts/particle-network';
+
+  const container = document.getElementById('three-bg');
+  if (container) {
+    // Enable pointer events for mouse tracking only
+    container.style.pointerEvents = 'auto';
+    const dispose = initParticleNetwork(container);
+
+    // Cleanup on page navigation (if ever used with SPA)
+    document.addEventListener('astro:before-swap', dispose, { once: true });
+  }
+</script>

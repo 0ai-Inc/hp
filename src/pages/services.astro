@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { useTranslations } from '../i18n/utils';
+
+const t = useTranslations('ja');
+---
+
+<BaseLayout title={`${t('services.title')} | ${t('site.title')}`} description={t('services.subtitle')} lang="ja">
+  <section class="py-20 sm:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <h1 class="text-3xl sm:text-4xl font-bold">{t('services.title')}</h1>
+        <p class="mt-4 text-white/50 max-w-2xl mx-auto">{t('services.subtitle')}</p>
+      </div>
+
+      <div class="mb-16">
+        <h2 class="text-xl font-semibold mb-6 text-white/80">プロダクト</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ServiceCard title={t('services.nexcast.title')} description={t('services.nexcast.desc')} />
+          <ServiceCard title={t('services.envoy.title')} description={t('services.envoy.desc')} />
+          <ServiceCard title={t('services.flecto.title')} description={t('services.flecto.desc')} />
+          <ServiceCard title={t('services.animex.title')} description={t('services.animex.desc')} />
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold mb-6 text-white/80">サービス</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ServiceCard title={t('services.custom.title')} description={t('services.custom.desc')} />
+          <ServiceCard title={t('services.consult.title')} description={t('services.consult.desc')} />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

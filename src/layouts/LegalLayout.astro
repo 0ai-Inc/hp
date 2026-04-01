@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Lang } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Lang;
+}
+
+const { title, description, lang } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-8">{title}</h1>
+    <div class="prose prose-invert prose-sm max-w-none text-white/70 [&_h2]:text-white [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-white [&_h3]:text-lg [&_h3]:font-medium [&_h3]:mt-6 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_li]:mb-1">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

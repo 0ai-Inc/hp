@@ -1,0 +1,21 @@
+---
+import { languages, type Lang } from '../i18n/ui';
+import { getLangFromUrl, getAlternateUrl, getAlternateLang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const altLang = getAlternateLang(lang);
+const altUrl = getAlternateUrl(Astro.url, altLang);
+---
+
+<a
+  href={altUrl}
+  class="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors text-sm"
+  aria-label={`Switch to ${languages[altLang]}`}
+>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M2 12h20"></path>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+  </svg>
+  <span>{languages[altLang]}</span>
+</a>

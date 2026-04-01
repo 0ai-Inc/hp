@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #061124;
+  --color-primary-light: #0a1d3a;
+  --color-primary-dark: #040b18;
+  --color-accent: #3b82f6;
+  --color-accent-light: #60a5fa;
+  --font-sans: "Inter", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
