@@ -28,13 +28,13 @@
       "last_updated": "2026-04-01T23:29:30Z"
     },
     "77d4c575-73e4-4658-9c12-1891cac66bb8": {
-      "user_message_count": 3,
-      "agent_message_count": 58,
+      "user_message_count": 6,
+      "agent_message_count": 133,
       "start_timestamp": "2026-04-01T23:24:43.961Z",
-      "end_timestamp": "2026-04-01T23:30:24.326Z",
-      "markdown_size_bytes": 98234,
+      "end_timestamp": "2026-04-01T23:42:06.351Z",
+      "markdown_size_bytes": 142527,
       "provider": "claude-code",
-      "last_updated": "2026-04-01T23:30:24Z"
+      "last_updated": "2026-04-01T23:42:07Z"
     },
     "825786d8-584d-420a-8dc0-4f3882138b23": {
       "user_message_count": 3,
