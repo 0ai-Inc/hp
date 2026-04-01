@@ -13,16 +13,7 @@ const t = useTranslations('ja');
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2">
-          <form
-            action="https://formsubmit.co/info@0ai-inc.com"
-            method="POST"
-            class="space-y-6"
-          >
-            <input type="hidden" name="_subject" value="【0ai HP】お問い合わせ" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://0ai-inc.com/contact?thanks=1" />
-            <input type="text" name="_honey" style="display:none" />
-
+          <form id="contact-form" class="space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-sm font-medium text-white/70 mb-2">{t('contact.form.name')} <span class="text-red-400">*</span></label>
@@ -68,15 +59,20 @@ const t = useTranslations('ja');
               ></textarea>
             </div>
 
-            <button type="submit"
-              class="w-full sm:w-auto px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors"
+            <button type="submit" id="submit-btn"
+              class="w-full sm:w-auto px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {t('contact.form.submit')}
+              <span id="btn-text">{t('contact.form.submit')}</span>
+              <span id="btn-loading" class="hidden">{t('contact.form.sending')}</span>
             </button>
           </form>
 
-          <div id="thanks-message" class="hidden mt-8 p-6 rounded-xl border border-green-500/20 bg-green-500/5 text-green-300">
+          <div id="success-message" class="hidden mt-8 p-6 rounded-xl border border-green-500/20 bg-green-500/5 text-green-300">
             {t('contact.form.thanks')}
+          </div>
+
+          <div id="error-message" class="hidden mt-4 p-4 rounded-lg border border-red-500/20 bg-red-500/5 text-red-300 text-sm">
+            {t('contact.form.error')}
           </div>
         </div>
 
@@ -104,10 +100,46 @@ const t = useTranslations('ja');
 </BaseLayout>
 
 <script>
-  if (new URLSearchParams(window.location.search).has('thanks')) {
-    const msg = document.getElementById('thanks-message');
-    if (msg) msg.classList.remove('hidden');
-    const form = document.querySelector('form');
-    if (form) form.classList.add('hidden');
-  }
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbxeZNSSbNgWveOafcpS6W1-KncH_ApTV1ydT0jw4q72aZOXAugAMqTtV5gozsbTOfSLNQ/exec';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text')!;
+  const btnLoading = document.getElementById('btn-loading')!;
+  const successMsg = document.getElementById('success-message')!;
+  const errorMsg = document.getElementById('error-message')!;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.classList.add('hidden');
+    submitBtn.disabled = true;
+    btnText.classList.add('hidden');
+    btnLoading.classList.remove('hidden');
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      category: formData.get('category'),
+      message: formData.get('message'),
+      lang: 'ja',
+    };
+
+    try {
+      await fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(data),
+      });
+      form.classList.add('hidden');
+      successMsg.classList.remove('hidden');
+    } catch {
+      errorMsg.classList.remove('hidden');
+      submitBtn.disabled = false;
+      btnText.classList.remove('hidden');
+      btnLoading.classList.add('hidden');
+    }
+  });
 </script>
