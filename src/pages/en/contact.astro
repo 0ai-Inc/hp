@@ -135,6 +135,12 @@ const t = useTranslations('en');
       });
       form.classList.add('hidden');
       successMsg.classList.remove('hidden');
+      if (typeof gtag === 'function') {
+        gtag('event', 'form_submit', {
+          event_category: 'contact',
+          event_label: String(data.category),
+        });
+      }
     } catch {
       errorMsg.classList.remove('hidden');
       submitBtn.disabled = false;

@@ -20,12 +20,24 @@ const t = useTranslations('ja');
         <div class="border border-white/5 rounded-xl overflow-hidden">
           <dl class="divide-y divide-white/5">
             <div class="flex flex-col sm:flex-row px-6 py-4">
-              <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">会社名</dt>
+              <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">{t('about.company.name.label')}</dt>
               <dd class="text-sm">{t('about.company.name')}</dd>
             </div>
             <div class="flex flex-col sm:flex-row px-6 py-4">
               <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">{t('about.company.representative')}</dt>
               <dd class="text-sm">{t('about.company.representative.value')}</dd>
+            </div>
+            <div class="flex flex-col sm:flex-row px-6 py-4">
+              <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">{t('about.company.established')}</dt>
+              <dd class="text-sm">{t('about.company.established.value')}</dd>
+            </div>
+            <div class="flex flex-col sm:flex-row px-6 py-4">
+              <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">{t('about.company.capital')}</dt>
+              <dd class="text-sm">{t('about.company.capital.value')}</dd>
+            </div>
+            <div class="flex flex-col sm:flex-row px-6 py-4">
+              <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">{t('about.company.corporate_number')}</dt>
+              <dd class="text-sm">{t('about.company.corporate_number.value')}</dd>
             </div>
             <div class="flex flex-col sm:flex-row px-6 py-4">
               <dt class="sm:w-40 text-sm text-white/40 mb-1 sm:mb-0">{t('about.company.address')}</dt>
