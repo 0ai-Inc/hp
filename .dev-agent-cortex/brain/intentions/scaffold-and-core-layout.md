@@ -1,7 +1,7 @@
 ---
 id: scaffold-and-core-layout
 title: プロジェクト初期化 + コアレイアウト + i18n + Three.js
-parent: brain/objectives/company-website-launch.md
+parent: .dev-agent-cortex/brain/objectives/company-website-launch.md
 github_issue: 2
 status: completed
 created_at: 2026-04-02T01:38:00+09:00

@@ -3,4 +3,4 @@ dist/
 .astro/
 .DS_Store
 *.log
-brain/memory/config/.env
+.dev-agent-cortex/brain/memory/config/.env
