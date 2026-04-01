@@ -3,9 +3,9 @@ id: scaffold-and-core-layout
 title: プロジェクト初期化 + コアレイアウト + i18n + Three.js
 parent: brain/objectives/company-website-launch.md
 github_issue: 2
-status: executing
+status: completed
 created_at: 2026-04-02T01:38:00+09:00
-completed_at: null
+completed_at: 2026-04-02T01:50:00+09:00
 ---
 
 ## Intent
@@ -27,4 +27,11 @@ Astro プロジェクトの初期化、コアレイアウト（Header/Footer/Bas
 
 ## Outcome
 
-(pending)
+全フェーズ完了。Astro 6 + Tailwind CSS 4 + Three.js で会社HPを構築し、GitHub Pages にデプロイ成功。
+
+- 全12ページ生成（JP 6 + EN 6）: ホーム、サービス、会社概要、お問い合わせ、プライバシーポリシー、利用規約
+- Three.js パーティクルネットワーク3D背景（マウスインタラクション対応）
+- 日英バイリンガル（ヘッダー右上言語切替アイコン）
+- カラーテーマ: #061124 ダークネイビー + 白
+- GitHub Pages デプロイ成功、カスタムドメイン 0ai-inc.com 設定済み
+- DNS設定はユーザー作業（Squarespace）
