@@ -9,15 +9,16 @@ interface Props {
   title: string;
   description: string;
   lang: Lang;
+  jsonLd?: object;
 }
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, jsonLd } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <SEOHead title={title} description={description} lang={lang} />
+    <SEOHead title={title} description={description} lang={lang} jsonLd={jsonLd} />
     <!-- Google Analytics -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-5XDTM5XDNM"></script>
     <script is:inline>

@@ -5,9 +5,31 @@ import ServiceCard from '../../components/ServiceCard.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const t = useTranslations('en');
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://0ai-inc.com/#organization",
+  "name": "0ai Inc.",
+  "alternateName": "株式会社0ai",
+  "url": "https://0ai-inc.com",
+  "logo": "https://0ai-inc.com/favicon.svg",
+  "description": "AI-ifying human activities and humanizing AI. A technology company reducing the boundary between humans and AI to zero.",
+  "foundingDate": "2026-01",
+  "email": "info@0ai-inc.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nihonbashi Mizuno Building 7F, 1-11-12 Nihonbashi Muromachi",
+    "addressLocality": "Chuo-ku",
+    "addressRegion": "Tokyo",
+    "postalCode": "103-0022",
+    "addressCountry": "JP"
+  },
+  "sameAs": []
+};
 ---
 
-<BaseLayout title={t('site.title')} description={t('site.description')} lang="en">
+<BaseLayout title={t('site.title')} description={t('site.description')} lang="en" jsonLd={organizationSchema}>
   <Hero />
 
   <section class="py-20 sm:py-28">

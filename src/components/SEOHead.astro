@@ -6,9 +6,10 @@ interface Props {
   title: string;
   description: string;
   lang: Lang;
+  jsonLd?: object;
 }
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, jsonLd } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const jaUrl = new URL(getAlternateUrl(Astro.url, 'ja'), Astro.site);
 const enUrl = new URL(getAlternateUrl(Astro.url, 'en'), Astro.site);
@@ -32,3 +33,6 @@ const enUrl = new URL(getAlternateUrl(Astro.url, 'en'), Astro.site);
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+{jsonLd && (
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+)}
