@@ -19,6 +19,9 @@ const { title, description, lang, jsonLd } = Astro.props;
 <html lang={lang}>
   <head>
     <SEOHead title={title} description={description} lang={lang} jsonLd={jsonLd} />
+    <!-- Preconnect for performance (Core Web Vitals) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <!-- Google Analytics -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-5XDTM5XDNM"></script>
     <script is:inline>

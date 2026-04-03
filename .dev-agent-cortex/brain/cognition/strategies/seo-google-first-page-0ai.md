@@ -20,8 +20,8 @@ completed_at: null
 
 ## Milestones
 
-- [ ] M1: 技術的SEO基盤の整備（sitemap.xml確認・robots.txt・構造化データ・Core Web Vitals・インデックス確認）
-- [ ] M2: オンページSEO最適化（title, meta description, OGP, H1タグ, "0ai"キーワード配置の最適化）
+- [x] M1: 技術的SEO基盤の整備（sitemap.xml確認・robots.txt・構造化データ・Core Web Vitals・インデックス確認）
+- [x] M2: オンページSEO最適化（title, meta description, OGP, H1タグ, "0ai"キーワード配置の最適化）
 - [ ] M3: Google Search Consoleでの検索パフォーマンス確認と改善施策の実施
 - [ ] M4: 外部ブランド認知向上（SNSプロフィール整備・ディレクトリ登録・バックリンク獲得）
 - [ ] M5: 「0ai」検索でのGoogle 1ページ目（top10）到達の確認とレポート
@@ -42,4 +42,22 @@ completed_at: null
 - `public/robots.txt` — クローラー設定
 
 ## Cycle Summaries
+
+### Cycle 1 -- 2026-04-03T05:56:50Z
+- **Milestone Progress**: 0 -> 1 / 5
+- **Intentions**: created=0, completed=0, failed=0
+- **Outcome**: M1技術的SEO基盤整備完了。robots.txt/sitemap/@astrojs/sitemap/canonical/OGP/hreflangが全て整備済みを確認し、未実装だったOrganization JSON-LD構造化データを日英トップページに追加してビルド・push完了。
+- **Signals**: stagnation=false, direction_change=false
+
+### Cycle 2 -- 2026-04-03T06:07:00Z
+- **Milestone Progress**: 1 -> 2 / 5
+- **Intentions**: created=0, completed=0, failed=0
+- **Outcome**: M2オンページSEO最適化完了。日英タイトルに「0ai（ゼロエーアイ）」配置、meta description最適化（CTA+キーワード）、H1に「0ai」追加、og:image/OGP画像（og-image.svg）新規作成、SEOHead.astroにog:image/twitter:imageタグ追加してpush済み。
+- **Signals**: stagnation=false, direction_change=false
+
+### Cycle 3 -- 2026-04-03T07:20:00Z
+- **Milestone Progress**: 2 -> 2 / 5（M3/M4 コード側施策完了、手動Search Console操作待ち）
+- **Intentions**: created=0, completed=0, failed=0
+- **Outcome**: M3/M4コード側施策完了。preconnect追加（Core Web Vitals改善）、Organization JSON-LDのsameAsにGitHubリンク追加、about.astroに「0ai」由来説明セクション追加、Footerに法人番号6010001262079明示。docs/seo-checklist.mdとdocs/seo-action-guide.mdを新規作成してユーザー向けSearch Console操作ガイドを整備。push済み。
+- **Signals**: stagnation=false, direction_change=false
 

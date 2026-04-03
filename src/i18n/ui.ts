@@ -42,6 +42,8 @@ export const ui = {
     'about.mission.desc': '人間活動のAI化とAIの人間化を実現し、人間とAIの境界を0にする。',
     'about.value.title': 'Value',
     'about.value.desc': 'Ubiquitous AI共生社会の誕生による、孤独・孤立の緩和。',
+    'about.origin.title': '「0ai」という名前について',
+    'about.origin.desc': '「0ai」は「Zero AI（ゼロ エーアイ）」を意味します。「0（ゼロ）」には3つの意味を込めています。第一に、AIをゼロから設計・構築するという創造の起点。第二に、人間とAIの境界を0（ゼロ）にするという融合のビジョン。第三に、ゼロ＝無限の可能性の出発点。株式会社0aiは、この3つの「0」を体現する会社として2026年に創業しました。',
     'about.company.title': '会社情報',
     'about.company.name.label': '会社名',
     'about.company.name': '株式会社0ai',
