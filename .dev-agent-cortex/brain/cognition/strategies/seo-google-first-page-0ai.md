@@ -22,8 +22,8 @@ completed_at: null
 
 - [x] M1: 技術的SEO基盤の整備（sitemap.xml確認・robots.txt・構造化データ・Core Web Vitals・インデックス確認）
 - [x] M2: オンページSEO最適化（title, meta description, OGP, H1タグ, "0ai"キーワード配置の最適化）
-- [ ] M3: Google Search Consoleでの検索パフォーマンス確認と改善施策の実施
-- [ ] M4: 外部ブランド認知向上（SNSプロフィール整備・ディレクトリ登録・バックリンク獲得）
+- [x] M3: Google Search Consoleでの検索パフォーマンス確認と改善施策の実施（コード側施策完了、手動操作ガイド整備済み）
+- [x] M4: 外部ブランド認知向上（SNSプロフィール整備・ディレクトリ登録・バックリンク獲得）（コード側施策完了、手動登録はユーザー対応待ち）
 - [ ] M5: 「0ai」検索でのGoogle 1ページ目（top10）到達の確認とレポート
 
 ## Principles
