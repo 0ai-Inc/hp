@@ -9,9 +9,9 @@ export type Lang = keyof typeof languages;
 
 export const ui = {
   ja: {
-    'site.title': '0ai（ゼロエーアイ）| AI活用 × 経営支援 | 株式会社0ai',
+    'site.title': '0ai（ゼロエーアイ）| No AI No Human | 株式会社0ai',
     'site.title.brand': '株式会社0ai',
-    'site.description': '0ai（ゼロエーアイ）は人間活動をAIに置換する株式会社0aiのサービス群です。AI動画生成・AI会議アシスタント・AI論文キュレーションなど、AIによる人間活動の無人化を無料相談からサポート。',
+    'site.description': '0ai（ゼロエーアイ）は人間活動をAIに置換する株式会社0aiのサービス群です。AIによる人間活動の無人化を無料相談からサポート。',
     'nav.home': 'ホーム',
     'nav.services': 'サービス',
     'nav.about': '会社概要',
@@ -83,7 +83,7 @@ export const ui = {
     'footer.rights': 'All rights reserved.',
   },
   en: {
-    'site.title': '0ai Inc. | AI for Business — Zero AI',
+    'site.title': '0ai Inc. | No AI No Human',
     'site.title.brand': '0ai Inc.',
     'site.description': '0ai Inc. (Zero AI) replaces human activities with AI. Our products include AI video generation, meeting assistant, and paper curation. Free initial consultation available.',
     'nav.home': 'Home',
