@@ -1,14 +1,14 @@
 ---
 id: seo-m1-technical-foundation
 trigger: claude-code
-status: in_progress
+status: completed
 created_at: 2026-04-03T05:52:04Z
-completed_at:
-task_nature: M1技術的SEO基盤の整備 — robots.txt作成、構造化データ追加、OGP/canonicalタグ整備、sitemapプラグイン設定
+completed_at: 2026-04-03T05:56:50Z
+task_nature: M1技術的SEO基盤の整備 — 既存実装の確認（robots.txt/sitemap/canonical/OGP全て整備済み）とOrganization JSON-LDの追加実装
 intention:
 intention_github_issue: 3
-evaluate_summary:
-learn_outcome:
+evaluate_summary: outcome_quality:high、plan_adherence:full。構造化データJSON-LDを日英トップページに追加し、ビルド・push完了。
+learn_outcome: Astroでの構造化データ実装パターン（jsonLd optsprops → JSON.stringify → ld+json script）を新規パターンとして取得。
 ---
 
 # M1: 技術的SEO基盤の整備 — サイト現状調査と実装
@@ -149,6 +149,50 @@ learn_outcome:
 5. ビルド成功後、git add & commit & push
 
 **Slack通知**: 不要（非同期通知対象の曖昧点なし）
+
+## ACT
+
+**実行ログ**:
+- `src/components/SEOHead.astro`: `jsonLd?: object` オプションプロップを追加。JSONが渡された場合に `<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />` を出力するよう実装。
+- `src/layouts/BaseLayout.astro`: `jsonLd?: object` プロップを追加し、`SEOHead` コンポーネントに伝播。
+- `src/pages/index.astro`: Organization schema（日本語）を定義し、`BaseLayout` に渡す実装を追加。会社名「株式会社0ai」、住所（東京都中央区日本橋）、メール、設立年2026-01を含む。
+- `src/pages/en/index.astro`: Organization schema（英語）を定義し、同様に追加。
+- `npm run build` 実行: ビルド成功（12ページ、904ms）。`/index.html` および `/en/index.html` に`application/ld+json`スクリプトタグが正しく出力されることを確認。
+- `git add` + `git commit` + `git push origin main`: コミット `00c9537` としてプッシュ完了。
+
+**成果**: 日英両言語のトップページにOrganization構造化データ（JSON-LD）を追加し、Googleが企業情報をリッチリザルトとして認識できる状態を実現。既存の技術的SEO要素（robots.txt、sitemap、canonical、OGP、hreflang）は全て整備済みであることを確認。M1の主要未実装項目を全て解決。
+
+## EVALUATE
+
+**自己評価**:
+- outcome_quality: high
+- plan_adherence: full
+- 根拠: PLANの3ファイル編集（SEOHead.astro、BaseLayout.astro、index.astro日英）を全て実施し、ビルド成功・push完了まで計画通り遂行した。構造化データの出力をdistファイルで直接確認できた。
+
+**ギャップ分析**: なし。PLANで策定した全ステップを期待通りに完了。og:imageの見送りもPLAN時点で合意済み。
+
+**仮定の結果**:
+| # | 曖昧点 | アクション | resolution_status | 根拠 |
+|---|--------|-----------|-------------------|------|
+| A1 | og:image用画像ファイルなし | record_only | confirmed | M2スコープとして明示的に見送りを決定。今サイクルでは画像なしのOGPタグ追加を回避し正しい判断だった。 |
+| A2 | Organization schemaのsameAs未確定 | record_only | confirmed | 空配列で初期化、M4で更新する方針通り実装。バリデーションエラーなし。 |
+
+**関連評価**: なし（ac-verifier未実行、M1のスコープはコード実装のみ）
+
+## LEARN
+
+**教訓**: Astroサイトのテクニカルなセットアップは事前調査で殆どが整備済みだった（robots.txt、sitemap、canonical、OGP、hreflang）。このような「調査→差分だけ実装」のアプローチは、無用な重複実装を避けてサイクルを効率化する。JSONスキーマをページごとに渡すオプションpropsパターンはAstroでの構造化データ管理の良いパターン。
+
+**検出パターン**:
+- type: new_pattern
+- description: Astroで構造化データ（JSON-LD）を管理する場合、layoutコンポーネントにオプションpropsとして渡すパターンが有効。各ページから言語別のスキーマオブジェクトを渡せるため、型安全かつ柔軟な実装が可能。
+
+**記憶昇格候補**: Astroサイトの構造化データ実装パターン（`jsonLd?: object` props → SEOHeadで `JSON.stringify` → `<script type="application/ld+json">`）を技術知見として記録。
+
+**関連学習パイプライン**: specstory-distill-memory（日次）で技術知見として処理される見込み。
+
+
+
 
 
 
