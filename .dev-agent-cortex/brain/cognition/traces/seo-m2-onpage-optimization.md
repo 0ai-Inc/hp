@@ -1,14 +1,14 @@
 ---
 id: seo-m2-onpage-optimization
 trigger: claude-code
-status: in_progress
+status: completed
 created_at: 2026-04-03T07:00:00Z
-completed_at:
+completed_at: 2026-04-03T07:16:00Z
 task_nature: M2オンページSEO最適化 — タイトルタグ・meta description・H1・キーワード配置・OGP画像の最適化実装
 intention:
 intention_github_issue: 3
-evaluate_summary:
-learn_outcome:
+evaluate_summary: outcome_quality:high、plan_adherence:full。ui.ts/SEOHead/OGP SVG/6サブページを改善しビルド・push完了。
+learn_outcome: Astro i18nのsite.title/site.title.brand分離パターンを新規パターンとして記録。
 ---
 
 # M2: オンページSEO最適化（タイトル・meta description・H1・コンテンツ最適化）
@@ -182,3 +182,63 @@ f) **OGP画像**: SVGベースで作成。背景: ダークネイビー（#06112
 **Slack文脈**: なし（CLI入力のため不要）
 
 **通知**: A1・A2いずれもrecord_onlyのため、Slack通知不要。
+
+## ACT
+
+**実行ログ**:
+1. **`src/i18n/ui.ts` 最適化**:
+   - `site.title`（日）: `株式会社0ai` → `0ai（ゼロエーアイ）| AI活用 × 経営支援 | 株式会社0ai`
+   - `site.description`（日）: 新description（「0ai（ゼロエーアイ）は人間活動をAIに置換...無料相談からサポート。」）に変更
+   - `hero.subtitle`（日）: 「株式会社0ai（ゼロエーアイ）が」を先頭に追加
+   - `services.title`（日）: `サービス` → `0aiのサービス`
+   - `services.subtitle`（日）: 「株式会社0ai（ゼロエーアイ）が提供する、」を先頭に追加
+   - `site.title`（英）: `0ai Inc.` → `0ai Inc. | AI for Business — Zero AI`
+   - `site.description`（英）: 「0ai Inc. (Zero AI) replaces...」に変更（141文字）
+   - `hero.subtitle`（英）: 「0ai (Zero AI) pursues...」に変更
+   - `services.title`（英）: `Services` → `0ai Services`
+   - `site.title.brand`（日英）: 新キー追加（サブページ用短縮ブランド名）
+2. **`src/components/SEOHead.astro` にog:image追加**: og:image/og:image:width/og:image:height/og:image:alt/twitter:imageの5タグを追加
+3. **`public/og-image.svg` を新規作成**: 1200×630px、ダークネイビー背景（#061124）、「0ai」大文字テキスト、タグライン（日英）を含むSVG
+4. **サブページのtitle更新**: about/services/contact（日英6ページ）の`site.title`参照を`site.title.brand`に変更
+5. **ビルド確認**: `npm run build` 成功（12ページ、882ms）。全ページのtitle・meta description・og:image出力を確認:
+   - `/index.html`: `<title>0ai（ゼロエーアイ）| AI活用 × 経営支援 | 株式会社0ai</title>`
+   - `/services/index.html`: `<title>0aiのサービス | 株式会社0ai</title>`
+   - `/about/index.html`: `<title>会社概要 | 株式会社0ai</title>`
+   - `/en/index.html`: `<title>0ai Inc. | AI for Business — Zero AI</title>`
+   - 全ページ: `og:image`・`twitter:image`に `https://0ai-inc.com/og-image.svg` が出力済み
+6. **git commit & push**: commit `fd0eb85` を main にpush（11ファイル変更、270行追加）
+
+**成果**: M2オンページSEO最適化の全項目を実装完了。「0ai」「ゼロエーアイ」キーワードがタイトル・meta description・H1周辺（subtitle）・サービスページH1に配置され、OGP画像も追加された。
+
+## EVALUATE
+
+**自己評価**:
+- outcome_quality: high
+- plan_adherence: full
+- 根拠: PLANで定義した7ステップを全て計画通り実行した。タイトルタグ・meta description・hero.subtitle・servicesページH1・og:image追加・OGP SVG作成の全項目を実装し、ビルド確認でも全ページのメタタグが期待通り出力されることを確認した。
+
+**ギャップ分析**:
+- 当初`site.title.brand`という追加キーが必要になることはPLAN時に明確に把握していなかったが（site.titleを長くした副作用）、実装中に即座に発見して対応した。設計上の小さなギャップだが自律解決できた。
+- OGP画像はSVGで作成したが、Twitter/X等のSNSプレビューはSVGを直接解釈しない場合がある。将来的にはPNGへの変換が望ましい。
+
+**仮定の結果**:
+| # | 曖昧点 | アクション | resolution_status | 根拠 |
+|---|--------|-----------|-------------------|------|
+| A1 | hero.title（H1）変更有無 | record_only | confirmed | hero.titleはそのまま「人間無き世界へ」を維持し、hero.subtitleに「株式会社0ai（ゼロエーアイ）が」を追加する方針が正しかった。ブランドビジョンを損なわずキーワードを補完できた |
+| A2 | OGP画像SVG可否 | record_only | confirmed | SVGで作成。ビルドには問題なし。SNSプレビューの制約は既知リスクとして許容 |
+
+**関連評価**: なし（実装後の検索順位変化はM3以降でSearch Consoleにて確認）
+
+## LEARN
+
+**教訓**: Astroのi18n集中管理（ui.ts）はSEO最適化において効率的な変更点だが、site.titleを長くすると全サブページのtitleも連動して長くなる副作用がある。ページ固有のtitleとブランド名を分離する`site.title.brand`パターンを最初から設計に組み込むべきだった。
+
+**検出パターン**:
+- type: new_pattern
+- description: Astro i18nでのSEO最適化パターン — トップページ用の長いSEOタイトル（`site.title`）とサブページ用の短縮ブランド名（`site.title.brand`）を分離することで、ページ固有の最適なtitle長を維持できる。
+
+**記憶昇格候補**:
+- `Astro i18nのsite.title/site.title.brandパターン`: トップページ用SEOタイトルとブランド名の分離設計。他のAstroプロジェクトのSEO実装でも再利用可能。
+- `OGP画像のSVG制約`: Twitter/X等のSNSはSVGのOGP画像を直接プレビューしない場合がある。静的サイトでPNG生成が困難な場合は許容するが、将来的なPNG変換を念頭に置く。
+
+**関連学習パイプライン**: specstory-distill-memory（Astro SEO実装パターンの記憶化）
