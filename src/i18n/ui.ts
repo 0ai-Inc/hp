@@ -10,7 +10,7 @@ export type Lang = keyof typeof languages;
 export const ui = {
   ja: {
     'site.title': '株式会社0ai',
-    'site.description': '人間活動のAI化とAIの人間化\n人間とAIの境界を0にする企業',
+    'site.description': '人間活動のAI化とAIの人間化の追求\n人間とAIの境界を0にする企業',
     'nav.home': 'ホーム',
     'nav.services': 'サービス',
     'nav.about': '会社概要',
