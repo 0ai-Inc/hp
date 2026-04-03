@@ -10,9 +10,22 @@ const t = useTranslations('ja');
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <h1 class="text-3xl sm:text-4xl font-bold text-center mb-16">{t('about.title')}</h1>
 
-      <div class="mb-16">
-        <h2 class="text-xl font-semibold mb-4">{t('about.mission.title')}</h2>
-        <p class="text-white/60 leading-relaxed">{t('about.mission.desc')}</p>
+      <div class="mb-20">
+        <div class="text-center mb-12 py-8 border-y border-white/10">
+          <p class="text-sm tracking-widest text-white/40 uppercase mb-3">{t('about.vision.title')}</p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">{t('about.vision.statement')}</h2>
+          <p class="mt-4 text-white/50 max-w-xl mx-auto">{t('about.vision.desc')}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div class="p-6 rounded-xl border border-white/5 bg-white/[0.02]">
+            <p class="text-sm tracking-widest text-white/40 uppercase mb-2">{t('about.mission.title')}</p>
+            <p class="text-white/70 leading-relaxed">{t('about.mission.desc')}</p>
+          </div>
+          <div class="p-6 rounded-xl border border-white/5 bg-white/[0.02]">
+            <p class="text-sm tracking-widest text-white/40 uppercase mb-2">{t('about.value.title')}</p>
+            <p class="text-white/70 leading-relaxed">{t('about.value.desc')}</p>
+          </div>
+        </div>
       </div>
 
       <div>
