@@ -15,7 +15,7 @@ export const ui = {
     'nav.services': 'サービス',
     'nav.about': '会社概要',
     'nav.contact': 'お問い合わせ',
-    'hero.title': '人間無き世界へ。',
+    'hero.title': '人間無き世界へ',
     'hero.subtitle': '人間活動のAI化とAIの人間化——人間とAIの境界を0にする。',
     'hero.cta': 'サービスを見る',
     'hero.contact': '無料相談する',
